@@ -29,3 +29,27 @@ async function getApiBodies() {
         console.error("There has been a problem with your fetch operation:", error);
     }
 }
+
+function getFavoritePlanets() {
+    // Get favorites from localStorage.
+    return JSON.parse(localStorage.getItem("favorites")) || [];;
+}
+
+function setFavoritePlanets(favorites) {
+    // Save favorites to localStorage.
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+}
+
+function addPlanetToFavorites(planetId) {
+    const favorites = getFavoritePlanets();
+    // Check if the planet is already in favorites.
+    if (favorites.findIndex(id => id === planetId) === -1) {
+        favorites.push(planetId);
+        setFavoritePlanets(favorites);
+    }
+}
+
+function removePlanetFromFavorites(planetId) {
+    const favorites = getFavoritePlanets();
+    setFavoritePlanets(favorites.filter(id => planetId !== id));
+}
