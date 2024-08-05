@@ -1,6 +1,52 @@
 const BASE_URL = "https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/";
 
-getApiBodies().then(console.log);
+getPlanets().then(console.log);
+
+async function getPlanets() {
+    let planets = getPlanetsFromLocalStorage();
+
+    if (planets.length === 0) {
+        planets = await getApiBodies();
+        planets = planets.map(setPlanetColor);
+        setPlanetsInLocalStorage(planets);
+    }
+
+    return planets;
+}
+
+function setPlanetColor(planet) {
+    switch (planet.id) {
+        case 0: // Sun
+            planet.color = "#FFD029";
+            break;
+        case 1: // Mercury
+            planet.color = "#888888";
+            break;
+        case 2: // Venus
+            planet.color = "#E7CDCD";
+            break;
+        case 3: // Earth
+            planet.color = "#428ED4";
+            break;
+        case 4: // Mars
+            planet.color = "#EF5F5F";
+            break;
+        case 5: // Jupiter
+            planet.color = "#E29468";
+            break;
+        case 6: // Saturn
+            planet.color = "#C7AA72";
+            break;
+        case 7: // Uranus
+            planet.color = "#C9D4F1";
+            break;
+        case 8: // Neptun
+            planet.color = "#7A91A7";
+            break;
+    }
+
+    return planet;
+}
 
 async function getApiKey() {
     try {
@@ -30,9 +76,19 @@ async function getApiBodies() {
     }
 }
 
+function getPlanetsFromLocalStorage() {
+    // Get planets from localStorage.
+    return JSON.parse(localStorage.getItem("planets")) || [];
+}
+
+function setPlanetsInLocalStorage(planets) {
+    // Save planets to localStorage.
+    localStorage.setItem("planets", JSON.stringify(planets));
+}
+
 function getFavoritePlanets() {
     // Get favorites from localStorage.
-    return JSON.parse(localStorage.getItem("favorites")) || [];;
+    return JSON.parse(localStorage.getItem("favorites")) || [];
 }
 
 function setFavoritePlanets(favorites) {
