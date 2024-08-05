@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/singlePlanet.css">
-  <title>Single Planet</title>
-</head>
-<body>
-  <script src="script/singlePlanet.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/singlePlanet.css" />
+    <title>Single Planet</title>
+  </head>
+  <body>
+    <figure class="planet-figure"></figure>
+    <nav>
+      <a href="./index.html">Home</a></nav>
+    </nav>
+
+    <article class="planet-container">
+      <div>
+        <h1 id="planet-title">Jorden</h1>
+        <button>Add to favorites</button>
+      </div>
+
+      <h2 id="planet-subtitle">Tellus</h2>
+      <p id="planet-description">
+        Jorden är den största och mest kompakta av de inre planeterna. Jorden är den enda av
+        planeterna som konstaterats ha geologisk aktivitet och är även den enda planeten som med
+        säkerhet härbärgerar liv. Dess flytande hydrosfär är unik bland stenplaneterna och jorden är
+        också den enda planeten hos vilken plattektonik har observerats. Jordens atmosfär skiljer
+        sig markant från de andra planeternas, vilket förklaras av att närvaron av levande
+        organismer har förändrat atmosfären till att innehålla fritt syre, i dag motsvarande 21
+        procent.
+      </p>
+
+      <section class="planet-facts">
+        <h3>OMKRETS</h3>
+        <p id="planet-circumference">40 075 km</p>
+        <h3>KM FRÅN SOLEN</h3>
+        <p id="planet-distance">149 600 000 km</p>
+        <h3>MAX TEMPERATUR</h3>
+        <p id="planet-temp-day">60C</p>
+        <h3>MIN TEMPERATUR</h3>
+        <p id="planet-temp-night">-50C</p>
+      </section>
+      <section class="moon-facts">
+        <h3>MÅNAR</h3>
+        <p id="planet-moons">Månen</p>
+      </section>
+    </article>
+
+    <script src="script/singlePlanet.js"></script>
+  </body>
 </html>
