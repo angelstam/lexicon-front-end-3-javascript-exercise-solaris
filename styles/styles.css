@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Secular+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Secular+One&display=swap");
 
 :root {
-  --bg-color: #131342;
+  --bg-blue-color: #0d154a;
+  --bg-purple-color: #190c22;
+  --text-color: #fff;
+  --button-bg-color: #fff;
+  --text-color-secondary: #ffd029;
+  --border-color: rgba(128, 128, 128, 0.3);
 }
 
 * {
@@ -10,10 +15,50 @@
   margin: 0;
 }
 
+body {
+  background: linear-gradient(to left, var(--bg-blue-color), var(--bg-purple-color));
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+nav {
+  a {
+    transition: all 0.3s ease-out;
+    
+    &:hover {
+      color: var(--text-color-secondary);
+    }
+  }
+}
+
+h1,
+h3 {
+  font-family: "Secular One", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  font-size: 3rem;
+}
+
 ul {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+  color: var(--text-color);
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-bg-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: var(--text-color-secondary);
+    transform: scale(1.1);
+  }
 }
