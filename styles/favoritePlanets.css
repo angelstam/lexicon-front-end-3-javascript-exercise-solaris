@@ -51,6 +51,12 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
 
+  h3 {
+    font-size: 1rem;
+    grid-column: span 3;
+    text-align: center;
+  }
+
   li {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     padding: 1rem;
