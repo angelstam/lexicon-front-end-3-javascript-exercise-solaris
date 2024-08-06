@@ -3,6 +3,7 @@
   --shadow1-color: hsl(from var(--planet-bg-color) h calc(s - 10) l / 50%);
   --shadow2-color: hsl(from var(--planet-bg-color) h calc(s - 20) l / 25%);
 }
+
 body {
   background-image: url("../assets/star-transparent.png"),
     linear-gradient(to left, var(--bg-blue-color), var(--bg-purple-color));
@@ -109,5 +110,15 @@ h3 {
     .fact-wrapper {
       grid-column: span 2;
     }
+  }
+}
+
+.fa-star {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    color: var(--text-color-secondary);
   }
 }
