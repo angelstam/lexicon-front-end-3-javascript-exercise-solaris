@@ -1,10 +1,10 @@
-window.addEventListener("load", () => {
-  renderPlanets();
+window.addEventListener("load", async () => {
+  const planets = await getPlanets();
+  renderPlanets(planets);
 });
 
 // Mattias: Create elements for the planets, set attributes and append them to the DOM
-async function renderPlanets() {
-  const planets = await getPlanets();
+function renderPlanets(planets) {
 
   const planetList = document.querySelector(".planet-list");
 
@@ -27,6 +27,14 @@ async function renderPlanets() {
 
     planetItem.style.width = `${planetCircumference}px`;
     planetItem.style.height = `${planetCircumference}px`;
+
+    // Add a ring to saturnus
+    if (planet.name === "Saturnus") {
+      const div = document.createElement("div");
+      div.classList.add("planet-ring");
+
+      planetItem.appendChild(div);
+    }
 
     const anchor = document.createElement("a");
 
