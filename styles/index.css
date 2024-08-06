@@ -61,3 +61,12 @@ nav {
     }
   }
 }
+
+.planet-ring {
+  width: 150%;
+  height: 0.5rem;
+  background-color: #dbcaa8;
+  border-radius: 50%;
+  transform-origin: left;
+  transform: translateY(75px) rotateZ(-45deg);
+}
