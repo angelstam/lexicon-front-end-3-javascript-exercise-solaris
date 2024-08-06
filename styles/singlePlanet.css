@@ -1,3 +1,8 @@
+:root {
+  --planet-bg-color: #5471cf;
+  --shadow1-color: hsl(from var(--planet-bg-color) h calc(s - 10) l / 50%);
+  --shadow2-color: hsl(from var(--planet-bg-color) h calc(s - 20) l / 25%);
+}
 body {
   background-image: url("../assets/star-transparent.png"),
     linear-gradient(to left, var(--bg-blue-color), var(--bg-purple-color));
@@ -20,8 +25,8 @@ body {
   aspect-ratio: 1/1;
   height: 80%;
   border-radius: 50%;
-  background-color: rgb(22, 162, 204);
-  box-shadow: 0 0 0 40px rgba(22, 162, 204, 0.2), 0 0 0 80px rgba(22, 162, 204, 0.1);
+  background-color: var(--planet-bg-color);
+  box-shadow: 0 0 0 40px var(--shadow1-color), 0 0 0 80px var(--shadow2-color);
 }
 
 nav {
@@ -100,5 +105,9 @@ h3 {
 
   .moon-facts {
     border: none;
+
+    .fact-wrapper {
+      grid-column: span 2;
+    }
   }
 }
