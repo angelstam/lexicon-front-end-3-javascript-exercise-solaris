@@ -1,6 +1,7 @@
 window.addEventListener("load", async () => {
   const planets = await getPlanets();
   renderPlanets(planets);
+  setupHoverPlanet();
 });
 
 // Mattias: Create elements for the planets, set attributes and append them to the DOM
@@ -37,3 +38,20 @@ function renderPlanets(planets) {
     planetList.appendChild(planetItem);
   });
 }
+
+//Yulia&Johan: hovering a planet
+function setupHoverPlanet() {
+  const planetList = document.querySelectorAll(".planet-list >li");
+  planetList.forEach(element => {
+    element.addEventListener("mouseover", event => {
+      const h1 = document.querySelector("header h1");
+      h1.textContent = element.dataset.name;
+    });
+    element.addEventListener("mouseout", event => {
+      const h1 = document.querySelector("header h1");
+      h1.textContent = "Solaris Space Center";
+    });
+  });
+}
+
+
