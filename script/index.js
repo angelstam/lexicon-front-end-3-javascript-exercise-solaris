@@ -28,14 +28,6 @@ function renderPlanets(planets) {
     planetItem.style.width = `${planetCircumference}px`;
     planetItem.style.height = `${planetCircumference}px`;
 
-    // Add a ring to saturnus
-    if (planet.name === "Saturnus") {
-      const div = document.createElement("div");
-      div.classList.add("planet-ring");
-
-      planetItem.appendChild(div);
-    }
-
     const anchor = document.createElement("a");
 
     // Add planet id to href to allow displaying planet based on url id on singePlanet page

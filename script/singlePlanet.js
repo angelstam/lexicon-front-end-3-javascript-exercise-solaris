@@ -28,8 +28,11 @@ async function renderSinglePlanet() {
       ).textContent = `${planet.distance.toLocaleString()} km`;
       document.querySelector("#planet-temp-day").textContent = `${planet.temp.day}°C`;
       document.querySelector("#planet-temp-night").textContent = `${planet.temp.night}°C`;
-
-      document.querySelector("#planet-moons").textContent = `${planet.moons.join(", ")}`;
+      if (planet.moons.length === 0) {
+        document.querySelector("#planet-moons").textContent = `-`;
+      } else {
+        document.querySelector("#planet-moons").textContent = `${planet.moons.join(", ")}`;
+      }
       // Mattias: change --planet-bg-color to planet.color
       document.documentElement.style.setProperty("--planet-bg-color", planet.color);
     }
