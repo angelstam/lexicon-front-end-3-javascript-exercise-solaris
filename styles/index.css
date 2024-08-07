@@ -36,6 +36,14 @@ nav {
   }
 }
 
+.loading {
+  font-family: "Secular One", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+}
+
 .planet-list {
   width: 100%;
   display: flex;
@@ -61,6 +69,12 @@ nav {
       transform: scale(1.1);
     }
   }
+
+  & .larger-scale {
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
 }
 
 [data-name="Saturnus"] a::before {
@@ -75,3 +89,4 @@ nav {
   transform-origin: left;
   transform: translateY(75px) rotateZ(-45deg);
 }
+

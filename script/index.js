@@ -1,4 +1,5 @@
 window.addEventListener("load", async () => {
+  timeoutLoadingPlanets();
   const planets = await getPlanets();
   renderPlanets(planets);
   setupHoverPlanet();
@@ -8,6 +9,10 @@ window.addEventListener("load", async () => {
 function renderPlanets(planets) {
 
   const planetList = document.querySelector(".planet-list");
+  const loadingH2 = document.querySelector("h2.loading");
+  if (planets.length > 0) {
+    loadingH2.classList.add("hidden");
+  }
 
   // Create a planet element for each planet
   planets.forEach((planet) => {
@@ -24,8 +29,9 @@ function renderPlanets(planets) {
       planetCircumference *= 4;
     } else if (planet.circumference < 41000) {
       planetCircumference *= 16;
+      planetItem.classList.add("larger-scale");
     }
-
+    
     planetItem.style.width = `${planetCircumference}px`;
     planetItem.style.height = `${planetCircumference}px`;
 
@@ -54,4 +60,12 @@ function setupHoverPlanet() {
   });
 }
 
-
+// Alla: If the planets can not load for 5 seconds something is wrong
+function timeoutLoadingPlanets() {
+  setTimeout(() => {
+    const loadingH2 = document.querySelector("h2.loading");
+    if (!loadingH2.classList.contains("hidden")) {
+      loadingH2.textContent = "Oops I can not find any planets";
+    }
+  }, 5000);
+}
