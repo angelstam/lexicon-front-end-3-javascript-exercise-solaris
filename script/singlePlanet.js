@@ -1,4 +1,8 @@
-renderSinglePlanet();
+window.addEventListener("load", () => {
+  renderSinglePlanet();
+  setupFavoriteButton();
+  setupFavoriteListener();
+});
 
 // Johan: get the planet id from the URL
 function getIdFromQueryString() {
@@ -13,7 +17,6 @@ async function renderSinglePlanet() {
   const planets = await getPlanets();
   planets.forEach((planet) => {
     if (planet.id === planetId) {
-      console.log(planet.name);
       document.querySelector("#planet-title").textContent = planet.name;
       document.querySelector("#planet-subtitle").textContent = planet.latinName;
       document.querySelector("#planet-description").textContent = planet.desc;
@@ -29,6 +32,47 @@ async function renderSinglePlanet() {
       document.querySelector("#planet-moons").textContent = `${planet.moons.join(", ")}`;
       // Mattias: change --planet-bg-color to planet.color
       document.documentElement.style.setProperty("--planet-bg-color", planet.color);
+    }
+  });
+}
+
+// Mattias: Setup favorite button to show outline/filled depending on if planet is favorited
+function setupFavoriteButton() {
+  const favoriteButton = document.querySelector("#favorite");
+  const planetId = getIdFromQueryString();
+  const favoritePlanets = getFavoritePlanets();
+
+  // Check if the planet is in favorites
+  const foundPlanet = favoritePlanets.find((planet) => planet.id === planetId);
+
+  // Switch between outline/filled depending on if planet is in favorites
+  if (foundPlanet) {
+    favoriteButton.classList.remove("fa-regular");
+    favoriteButton.classList.add("fa-solid");
+
+  } else {
+    favoriteButton.classList.remove("fa-solid");
+    favoriteButton.classList.add("fa-regular");
+  }
+}
+
+// Mattias: Setup the click functionality for adding/removing a planet from favorites
+function setupFavoriteListener() {
+  const favoriteButton = document.querySelector("#favorite");
+  const planetId = getIdFromQueryString();
+
+  favoriteButton.addEventListener("click", async () => {
+
+    // If the planet isn't favorited
+    if (favoriteButton.classList.contains("fa-regular")) {
+      const validPlanets = await getPlanets();
+      addPlanetToFavorites(validPlanets.find(planet => planet.id === planetId));
+      setupFavoriteButton();
+
+    // If the planet is favorited
+    } else if (favoriteButton.classList.contains("fa-solid")) {
+      removePlanetFromFavorites(planetId);
+      setupFavoriteButton();
     }
   });
 }
