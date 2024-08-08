@@ -22,13 +22,10 @@ function renderPlanets(planets) {
     planetItem.style.backgroundColor = planet.color;
 
     // Reduce the circumference of the planet to make it more appropriate (based on the sun)
-    let planetCircumference = planet.circumference / 20000;
+    let planetCircumference = (27.9 * planet.circumference ** 0.694) / 3000;
 
     // Increase size for smaller planets in relation to scale of sun, based on their circumference
-    if (planet.circumference > 150000 && planet.name !== "Solen") {
-      planetCircumference *= 4;
-    } else if (planet.circumference < 41000) {
-      planetCircumference *= 16;
+    if (planet.circumference < 41000) {
       planetItem.classList.add("larger-scale");
     }
     
