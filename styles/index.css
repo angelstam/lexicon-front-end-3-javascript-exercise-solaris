@@ -66,6 +66,7 @@ nav {
     }
 
     &:hover {
+      /* Johan: if attr(data-scale) is ever supported it could have been used here */
       transform: scale(1.1);
     }
   }
@@ -87,6 +88,6 @@ nav {
   background-color: #dbcaa8;
   border-radius: 50%;
   transform-origin: left;
-  transform: translateY(75px) rotateZ(-45deg);
+  transform: translateY(70px) rotateZ(-45deg);
 }
 
