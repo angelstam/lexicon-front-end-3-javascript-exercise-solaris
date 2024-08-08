@@ -1,12 +1,12 @@
 body {
   height: 100vh;
+  padding: 2rem;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
   height: 100%;
 }
 
