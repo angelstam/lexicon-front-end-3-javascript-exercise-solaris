@@ -66,6 +66,7 @@ nav {
     }
 
     &:hover {
+      /* if attr(data-scale) is ever supported it could have been used here */
       transform: scale(1.1);
     }
   }
