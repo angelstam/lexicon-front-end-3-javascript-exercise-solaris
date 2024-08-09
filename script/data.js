@@ -13,6 +13,11 @@ async function getPlanets() {
   return planets;
 }
 
+// Johan: Get a single planet from API or localStorage
+async function getPlanet(planetId) {
+  return (await getPlanets()).find(planet => planet.id === planetId);
+}
+
 // Johan: Add a color to each planet object
 function setPlanetColor(planet) {
   switch (planet.id) {
