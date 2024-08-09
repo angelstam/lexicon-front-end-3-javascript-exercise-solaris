@@ -101,12 +101,12 @@ function setFavoritePlanets(favorites) {
 }
 
 // Johan, Mattias: Add planet to favories
-function addPlanetToFavorites(planet) {
+function addPlanetToFavorites(planetId) {
   const favorites = getFavoritePlanets();
 
   // Check if the planet is already in favorites.
-  if (favorites.findIndex((favorite) => favorite.id === planet.id) === -1) {
-    favorites.push(planet);
+  if (favorites.findIndex(id => id === planetId) === -1) {
+    favorites.push(planetId);
     setFavoritePlanets(favorites);
   }
 }
@@ -114,5 +114,10 @@ function addPlanetToFavorites(planet) {
 // Johan, Mattias: Remove planet from favorites
 function removePlanetFromFavorites(planetId) {
   const favorites = getFavoritePlanets();
-  setFavoritePlanets(favorites.filter((favorite) => planetId !== favorite.id));
+  setFavoritePlanets(favorites.filter(id => planetId !== id));
+}
+
+// Johan: Check if the planet is in favorites
+function isFavoritePlanet(planetId) {
+  return getFavoritePlanets().includes(planetId);
 }

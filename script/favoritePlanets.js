@@ -1,12 +1,14 @@
-window.addEventListener("load", () => {
-  renderFavoritePlanets();
+window.addEventListener("load", async () => {
+  await renderFavoritePlanets();
 });
 
-// Mikaela: Create elements for the objects in the array from  getFavoritePlanets();
-function renderFavoritePlanets() {
-  const favoritePlanets = getFavoritePlanets();
-  // Sort the favorites so they'll be displayed in order of id
-  favoritePlanets.sort((a, b) => a.id - b.id);
+// Mikaela&Johan: Create elements for the objects in the array from  getFavoritePlanets();
+async function renderFavoritePlanets() {
+  const planets = await getPlanets();
+  const favoriteIds = getFavoritePlanets();
+
+  // Filter out favorites from the list of planets;
+  favoritePlanets = planets.filter(planet => favoriteIds.includes(planet.id));
 
   const favoritesList = document.querySelector(".favorites-list");
 

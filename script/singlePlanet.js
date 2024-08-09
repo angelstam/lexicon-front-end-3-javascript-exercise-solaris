@@ -39,42 +39,34 @@ async function renderSinglePlanet() {
   });
 }
 
-// Mattias: Setup favorite button to show outline/filled depending on if planet is favorited
+// Mattias&Johan: Setup favorite button to show outline/filled depending on if planet is favorited
 function setupFavoriteButton() {
   const favoriteButton = document.querySelector("#favorite");
   const planetId = getIdFromQueryString();
-  const favoritePlanets = getFavoritePlanets();
 
   // Check if the planet is in favorites
-  const foundPlanet = favoritePlanets.find((planet) => planet.id === planetId);
-
   // Switch between outline/filled depending on if planet is in favorites
-  if (foundPlanet) {
+  if (isFavoritePlanet(planetId)) {
     favoriteButton.classList.remove("fa-regular");
     favoriteButton.classList.add("fa-solid");
-
   } else {
     favoriteButton.classList.remove("fa-solid");
     favoriteButton.classList.add("fa-regular");
   }
 }
 
-// Mattias: Setup the click functionality for adding/removing a planet from favorites
+// Mattias&Johan: Setup the click functionality for adding/removing a planet from favorites
 function setupFavoriteListener() {
   const favoriteButton = document.querySelector("#favorite");
   const planetId = getIdFromQueryString();
 
-  favoriteButton.addEventListener("click", async () => {
-
-    // If the planet isn't favorited
-    if (favoriteButton.classList.contains("fa-regular")) {
-      const validPlanets = await getPlanets();
-      addPlanetToFavorites(validPlanets.find(planet => planet.id === planetId));
-      setupFavoriteButton();
-
+  favoriteButton.addEventListener("click", () => {
     // If the planet is favorited
-    } else if (favoriteButton.classList.contains("fa-solid")) {
+    if (isFavoritePlanet(planetId)) {
       removePlanetFromFavorites(planetId);
+      setupFavoriteButton();
+    } else {
+      addPlanetToFavorites(planetId);
       setupFavoriteButton();
     }
   });
