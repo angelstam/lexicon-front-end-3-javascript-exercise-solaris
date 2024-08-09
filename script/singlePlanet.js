@@ -14,21 +14,21 @@ function getIdFromQueryString() {
 // Mikaela&Johan: display information based on which planet id
 async function renderSinglePlanet() {
   const planet = await getPlanet(getIdFromQueryString());
+  const d = document; d.qS = d.querySelector; // to make shorter rows
 
-  document.querySelector("#planet-title").textContent = planet.name;
-  document.querySelector("#planet-subtitle").textContent = planet.latinName;
-  document.querySelector("#planet-description").textContent = planet.desc;
-  document.querySelector("#planet-circumference").textContent
-    = `${planet.circumference.toLocaleString()} km`;
-  document.querySelector("#planet-distance").textContent
-    = `${planet.distance.toLocaleString()} km`;
-  document.querySelector("#planet-temp-day").textContent = `${planet.temp.day}°C`;
-  document.querySelector("#planet-temp-night").textContent = `${planet.temp.night}°C`;
+  d.qS("#planet-title").textContent = planet.name;
+  d.qS("#planet-subtitle").textContent = planet.latinName;
+  d.qS("#planet-description").textContent = planet.desc;
+  d.qS("#planet-circumference").textContent = `${planet.circumference.toLocaleString()} km`;
+  d.qS("#planet-distance").textContent = `${planet.distance.toLocaleString()} km`;
+  d.qS("#planet-temp-day").textContent = `${planet.temp.day}°C`;
+  d.qS("#planet-temp-night").textContent = `${planet.temp.night}°C`;
   if (planet.moons.length === 0) {
-    document.querySelector("#planet-moons").textContent = `-`;
+    d.qS("#planet-moons").textContent = `-`;
   } else {
-    document.querySelector("#planet-moons").textContent = `${planet.moons.join(", ")}`;
+    d.qS("#planet-moons").textContent = `${planet.moons.join(", ")}`;
   }
+  delete d.qS; // cleanup
   // Mattias: change --planet-bg-color to planet.color
   document.documentElement.style.setProperty("--planet-bg-color", planet.color);
 }
