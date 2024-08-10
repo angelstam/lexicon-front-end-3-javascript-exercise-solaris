@@ -5,10 +5,9 @@ window.addEventListener("load", async () => {
 // Mikaela&Johan: Create elements for the objects in the array from  getFavoritePlanets();
 async function renderFavoritePlanets() {
   const planets = await getPlanets();
-  const favoriteIds = getFavoritePlanets();
 
   // Filter out favorites from the list of planets;
-  favoritePlanets = planets.filter(planet => favoriteIds.includes(planet.id));
+  favoritePlanets = planets.filter(planet => isFavoritePlanet(planet.id));
 
   const favoritesList = document.querySelector(".favorites-list");
 
